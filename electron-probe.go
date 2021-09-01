@@ -2,9 +2,9 @@ package main
 
 import (
 	"context"
+	"embed"
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"strconv"
 	"time"
@@ -14,6 +14,9 @@ import (
 	"github.com/mafredri/cdp/protocol/runtime"
 	"github.com/mafredri/cdp/rpcc"
 )
+
+//go:embed scripts/*
+var scriptFolder embed.FS
 
 // Working around a syntax limitation
 func BoolAddr(b bool) *bool {
@@ -32,7 +35,7 @@ func main() {
 		log.Fatalf("Must specify script payload")
 	}
 
-	scriptData, err := ioutil.ReadFile(*scriptPath)
+	scriptData, err := scriptFolder.ReadFile(*scriptPath)
 	if err != nil {
 		panic(err)
 	}
