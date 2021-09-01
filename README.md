@@ -55,5 +55,3 @@ $ ./electron-probe -inspect-target http://localhost:9229 -script scripts/dump_sl
 
 There is a small set of example scripts in the `scripts` directory to get you started.
 
-## TODO
-I plan to add support very soon for packing payload scripts into `electron-probe` at build time using the Go [embed](https://pkg.go.dev/embed) package so that they're not separate files.
